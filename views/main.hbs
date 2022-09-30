@@ -1,0 +1,32 @@
+<main class="container d-flex flex-column align-items-center gap-2">
+    <h2 class="text-center">Galería</h2>
+    {{#if productos}}
+        <div class="row">
+            <table class="border border-primary">
+                <thead>
+                    <tr class="text-center">
+                        <th class="border border-primary">Nombre</th>
+                        <th class="border border-primary">Precio</th>
+                        <th class="border border-primary">Foto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each productos}}
+                        <tr class="text-center">
+                            <td class="border border-primary">{{nombre}}</td>
+                            <td class="border border-primary">{{precio}}</td>
+                            <td class="border border-primary">
+                                <img src="{{foto}}" alt="foto producto">
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{else}}
+        <h3 class="text-center">NO HAY PRODUCTOS</h3>
+    {{/if}}
+    <form class="mb-1" action="/" method="get">
+        <input type="submit" value="Volver al inicio">
+    </form>
+</main>
