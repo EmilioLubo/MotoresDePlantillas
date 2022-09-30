@@ -1,0 +1,23 @@
+extends layout 
+block galeria 
+    main(class="container d-flex flex-column align-items-center gap-2")
+        h2.text-center Galería
+        if productos.length > 0
+            div.row
+                table(class="border border-primary")
+                    thead
+                        tr.text-center
+                            th(class="border border-primary") Nombre
+                            th(class="border border-primary") Precio
+                            th(class="border border-primary") Foto
+                    tbody
+                        each producto in productos
+                            tr.text-center
+                                td(class="border border-primary")= producto.nombre
+                                td(class="border border-primary")= producto.precio
+                                td(class="border border-primary")
+                                    img(src=producto.foto alt="foto producto")
+        else
+            h3.text-center NO HAY PRODUCTOS
+        form.mb-1(action="/" method="get")
+            input(type="submit" value="Volver al inicio")

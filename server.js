@@ -1,27 +1,15 @@
 import Express from "express"
-import * as hbs from 'express-handlebars'
-import path from 'path'
-import { fileURLToPath } from "url"
 import APIproductos from './Modules/products.js'
 
 const app = Express()
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 const api = new APIproductos()
 
 app.use(Express.json())
 app.use(Express.urlencoded({extended: true}))
 
-app.engine('hbs', hbs.engine({
-    extname: '.hbs',
-    partialsDir:__dirname+'/views/partials',
-    layoutsDir:__dirname+'/views/layouts',
-    defaultLayout:'layout.hbs'
-}))
-app.set('views', './views')
-app.set('view engine', 'hbs')
+app.set('views', './src/views')
+app.set('view engine', 'pug')
 
 app.get('/', (req, res) =>{
     res.render('index')
