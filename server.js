@@ -9,10 +9,10 @@ app.use(Express.json())
 app.use(Express.urlencoded({extended: true}))
 
 app.set('views', './src/views')
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 
 app.get('/', (req, res) =>{
-    res.render('index')
+    res.render('pages/index')
 })
 app.post('/', (req, res) => {
     const newProduct = req.body
@@ -21,7 +21,7 @@ app.post('/', (req, res) => {
 })
 app.get('/productos', (req, res) => {
     const productos = api.getAll()
-    res.status(200).render('main', {productos})
+    res.status(200).render('pages/main', {productos})
 })
 
 const PORT = 8080
